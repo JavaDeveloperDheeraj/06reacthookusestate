@@ -14,6 +14,29 @@ function Fontsize() {
       let color = e.target.value;
       setfsize(color);
     }
+
+    const obj = {
+      class : "show",
+      btnText : "Hide"
+    }
+
+    const [show, setShow] = useState(obj);
+
+    function myfun(){
+      if(show.class=== "show"){
+        setShow({
+          class : "hide",
+          btnText : "Show"
+        })
+
+      } else {
+        setShow({
+          class : "show",
+          btnText : "Hide"
+        })
+
+      }
+    }
   return (
     <>
     <br></br>
@@ -24,8 +47,11 @@ function Fontsize() {
 
         <input type='range' name='range' onChange={getValue} step={5} min={'25px'}/> 
         <input type='color' name='color' onChange={getColor}/>    
+
+        <h1 className={show.class} >Hide me by click on below button</h1>
+        <button onClick={myfun}>{show.btnText}</button>
     </>
   )
 }
-
+ 
 export default Fontsize;
